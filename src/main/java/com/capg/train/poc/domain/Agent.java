@@ -1,14 +1,18 @@
 package com.capg.train.poc.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 public class Agent {
 
     private String agentId;
     private String firstname;
     private String lastname;
     private String email;
+
+    public Agent( String agentId,String firstname,String lastname,String email){
+        this.agentId = agentId;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+    }
 
     public String getAgentId() {
         return agentId;

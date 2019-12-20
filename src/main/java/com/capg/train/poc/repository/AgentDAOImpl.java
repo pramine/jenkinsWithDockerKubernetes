@@ -1,12 +1,9 @@
 package com.capg.train.poc.repository;
 
-
 import com.capg.train.poc.domain.Agent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public class AgentDAOImpl implements AgentDAO{
@@ -15,8 +12,14 @@ public class AgentDAOImpl implements AgentDAO{
     private JdbcTemplate jdbcTemplate;
 
 
-    public Agent getAgent(String agentId){
-        return jdbcTemplate.queryForObject("select * from agent where agentId=?", Agent.class);
+    public Agent getAgent(String agentId) {
+        return jdbcTemplate.queryForObject("select * from agent where agentId=?",new Object[]{agentId}, (rs, rowNum) ->
+                new Agent(
+                        rs.getString("agentId"),
+                        rs.getString("firstname"),
+                        rs.getString("lastname"),
+                        rs.getString("email"))
+        );
     }
 
     public int createAgent(Agent agent) {

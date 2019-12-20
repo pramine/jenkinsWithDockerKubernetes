@@ -5,7 +5,6 @@ import com.capg.train.poc.service.AgentService;
 import javassist.tools.web.BadHttpRequest;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping(path = "/agents")
@@ -17,14 +16,12 @@ public class AgentController {
         this.agentService = agentService;
     }
 
-
-
     @GetMapping
     public Agent getAgents(String agentId) {
         return agentService.retrieveAgentByAgentId(agentId);
     }
 
-    @GetMapping(path = "/{agentId}")
+    @GetMapping(path = "/{agentId}", produces = "application/json")
     public Agent getAgentById(@PathVariable("agentId") String agentId) {
         return agentService.retrieveAgentByAgentId(agentId);
     }
