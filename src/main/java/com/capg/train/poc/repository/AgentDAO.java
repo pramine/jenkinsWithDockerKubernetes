@@ -1,6 +1,6 @@
-package com.example.demo.repository;
+package com.capg.train.poc.repository;
 
-import com.example.demo.domain.Agent;
+import com.capg.train.poc.domain.Agent;
 
 public interface AgentDAO {
     public Agent getAgent(String agentId);
@@ -10,5 +10,7 @@ public interface AgentDAO {
     public int updateAgent(Agent agent, String agentId);
 
     public int deleteAgent(String agentId);
+
+    public Boolean isAgentExist(String agentId);
 
 }

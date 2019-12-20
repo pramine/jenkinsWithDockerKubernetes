@@ -1,10 +1,12 @@
-package com.example.demo.repository;
+package com.capg.train.poc.repository;
 
 
-import com.example.demo.domain.Agent;
+import com.capg.train.poc.domain.Agent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class AgentDAOImpl implements AgentDAO{
@@ -25,8 +27,18 @@ public class AgentDAOImpl implements AgentDAO{
         return jdbcTemplate.update("update agent set firstname = ?, lastname=?, email=? where agentId = ?", new Object[]{agent.getFirstname(), agent.getLastname(), agent.getEmail(), agent.getAgentId()});
     }
    public int deleteAgent(String agentId) {
-       return jdbcTemplate.update("delete agent where agentId = ?", agentId);
+       return jdbcTemplate.update("delete from agent where agentId = ?", agentId);
    }
+
+   public Boolean isAgentExist(String agentId){
+        int count = jdbcTemplate.queryForObject("select * from agent where agentId=?", new Object[] { agentId }, Integer.class);
+       if(count > 0 ){
+           return true;
+       }else{
+           return false;
+       }
+   }
+
 }
 
 

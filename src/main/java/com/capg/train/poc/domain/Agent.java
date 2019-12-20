@@ -1,12 +1,10 @@
-package com.example.demo.domain;
+package com.capg.train.poc.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
 public class Agent {
 
-    @Id
     private String agentId;
     private String firstname;
     private String lastname;
