@@ -13,9 +13,9 @@ public class AgentDAOImpl implements AgentDAO{
 
 
     public Agent getAgent(String agentId) {
-        return jdbcTemplate.queryForObject("select * from agent where agentId=?",new Object[]{agentId}, (rs, rowNum) ->
+        return jdbcTemplate.queryForObject("select * from agent where agent_Id=?",new Object[]{agentId}, (rs, rowNum) ->
                 new Agent(
-                        rs.getString("agentId"),
+                        rs.getString("agent_Id"),
                         rs.getString("firstname"),
                         rs.getString("lastname"),
                         rs.getString("email"))
@@ -23,18 +23,18 @@ public class AgentDAOImpl implements AgentDAO{
     }
 
     public int createAgent(Agent agent) {
-        return jdbcTemplate.update("insert into agent (agentId,firstname, lastname, email) values(?,?,?,?)", new Object[]{agent.getAgentId(), agent.getFirstname(), agent.getLastname(), agent.getEmail()});
+        return jdbcTemplate.update("insert into agent (agent_Id,firstname, lastname, email) values(?,?,?,?)", new Object[]{agent.getAgent_Id(), agent.getFirstname(), agent.getLastname(), agent.getEmail()});
     }
 
     public int updateAgent(Agent agent, String agentId) {
-        return jdbcTemplate.update("update agent set firstname = ?, lastname=?, email=? where agentId = ?", new Object[]{agent.getFirstname(), agent.getLastname(), agent.getEmail(), agent.getAgentId()});
+        return jdbcTemplate.update("update agent set firstname = ?, lastname=?, email=? where agent_Id = ?", new Object[]{agent.getFirstname(), agent.getLastname(), agent.getEmail(), agent.getAgent_Id()});
     }
    public int deleteAgent(String agentId) {
-       return jdbcTemplate.update("delete from agent where agentId = ?", agentId);
+       return jdbcTemplate.update("delete from agent where agent_Id = ?", agentId);
    }
 
    public Boolean isAgentExist(String agentId){
-        int count = jdbcTemplate.queryForObject("select * from agent where agentId=?", new Object[] { agentId }, Integer.class);
+        int count = jdbcTemplate.queryForObject("select * from agent where agent_Id=?", new Object[] { agentId }, Integer.class);
        if(count > 0 ){
            return true;
        }else{

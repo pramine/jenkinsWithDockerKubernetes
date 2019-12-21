@@ -1,25 +1,34 @@
 package com.capg.train.poc.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Agent {
 
-    private String agentId;
+    @Id
+    private String agent_Id;
     private String firstname;
     private String lastname;
     private String email;
 
+    public Agent(){
+
+    }
+
     public Agent( String agentId,String firstname,String lastname,String email){
-        this.agentId = agentId;
+        this.agent_Id = agentId;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
     }
 
-    public String getAgentId() {
-        return agentId;
+    public String getAgent_Id() {
+        return agent_Id;
     }
 
-    public void setAgentId(String agentId) {
-        this.agentId = agentId;
+    public void setAgent_Id(String agentId) {
+        this.agent_Id = agentId;
     }
 
     public String getFirstname() {
@@ -48,7 +57,7 @@ public class Agent {
 
     @Override
     public String toString() {
-        return "Agent{" + "agentId='" + agentId + '\'' + ", firstname='" + firstname + '\'' + ", lastname='" + lastname + '\''
+        return "Agent{" + "agentId='" + agent_Id + '\'' + ", firstname='" + firstname + '\'' + ", lastname='" + lastname + '\''
                 + ", email='" + email + '\'' + '}';
     }
 }

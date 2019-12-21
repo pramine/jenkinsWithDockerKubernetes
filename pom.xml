@@ -9,7 +9,7 @@
     </parent>
     <groupId>com.capg.train.poc</groupId>
     <artifactId>jenkinsWithDockerKubernetes</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>jenkinsWithDockerKubernetes</name>
     <description>POC project for Spring Boot with maven using mysql as Database</description>
 
